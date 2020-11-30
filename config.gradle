@@ -1,0 +1,38 @@
+/**
+ * 全局统一配置
+ */
+ext {
+
+    /**
+     * 是否单独运行
+     */
+    runOneAsApp = false
+    runTwoAsApp = false
+    runThreeAsApp = false
+
+    /**
+     * 版本统一管理
+     */
+    versions = [
+            applicationId           : "com.blued.myunitydemo",        //应用ID
+            versionCode             : 100,                    //版本号
+            versionName             : "1.0.0",              //版本名称
+
+            compileSdkVersion       : 29,
+            minSdkVersion           : 18,
+            targetSdkVersion        : 29,
+            buildToolsVersion       : "29.0.3",
+
+            arouterApiVersion       : "1.4.1",
+            arouterCompilerVersion  : "1.2.2",
+            arouterAnnotationVersion: "1.0.4"
+    ]
+
+    dependencies = [
+            //阿里路由
+            "arouter_api"       : "com.alibaba:arouter-api:1.4.1",
+            "arouter_compiler"  : "com.alibaba:arouter-compiler:1.2.2",
+            "arouter_annotation": "com.alibaba:arouter-annotation:1.0.4",
+    ]
+
+}

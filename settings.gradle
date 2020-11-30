@@ -1,0 +1,6 @@
+include ':b_module_three'
+include ':b_module_two'
+include ':b_module_one'
+include ':c_module_main'
+include ':app', ':x_module_common'
+rootProject.name = "MyUnityDemo"
