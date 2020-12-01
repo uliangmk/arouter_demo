@@ -6,7 +6,7 @@ ext {
     /**
      * 是否单独运行
      */
-    runOneAsApp = true
+    runOneAsApp = false
     runTwoAsApp = false
     runThreeAsApp = false
 
