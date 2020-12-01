@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 //import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blued.common.R;
 
 
@@ -22,6 +23,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.x_module_common_activity_base);
         container = findViewById(R.id.fl_container);
+        ARouter.getInstance().inject(this);
     }
 
     /**

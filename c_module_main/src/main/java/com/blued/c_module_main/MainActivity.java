@@ -17,12 +17,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("ulog","onCreate -- MainActivity"+" ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_activity_main);
         initView();
         initListener();
-        ARouter.getInstance().inject(this);
     }
 
     private void initView() {

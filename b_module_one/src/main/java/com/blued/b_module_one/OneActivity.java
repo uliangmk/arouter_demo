@@ -26,7 +26,6 @@ public class OneActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initView();
         initListener();
-        ARouter.getInstance().inject(OneActivity.this);
     }
 
     private void initView() {

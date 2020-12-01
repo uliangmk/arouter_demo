@@ -25,7 +25,6 @@ public class ThreeActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initView();
         initListener();
-
     }
 
     private void initView() {
