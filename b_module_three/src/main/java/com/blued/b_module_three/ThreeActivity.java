@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blued.common.base.BaseActivity;
 import com.blued.common.constants.ARouterConfig;
@@ -22,8 +24,9 @@ public class ThreeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity3_main);
         initView();
+        initCallBack();
         initListener();
     }
 
@@ -36,18 +39,42 @@ public class ThreeActivity extends BaseActivity {
         module1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build(ARouterConfig.VIEW_ONE).navigation();
-                Toast.makeText(ThreeActivity.this, "two", Toast.LENGTH_SHORT).show();
+                ARouter.getInstance().build(ARouterConfig.VIEW_ONE).navigation(ThreeActivity.this,callback);
             }
         });
 
         module2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build(ARouterConfig.VIEW_TWO).navigation();
-                Toast.makeText(ThreeActivity.this, "three", Toast.LENGTH_SHORT).show();
+                ARouter.getInstance().build(ARouterConfig.VIEW_TWO).navigation(ThreeActivity.this,callback);
             }
         });
 
+    }
+
+    private NavigationCallback callback;
+
+    private void initCallBack() {
+        callback = new NavigationCallback() {
+            @Override
+            public void onFound(Postcard postcard) {
+
+            }
+
+            @Override
+            public void onLost(Postcard postcard) {
+                Toast.makeText(ThreeActivity.this, "组件没有找到", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onArrival(Postcard postcard) {
+                Toast.makeText(ThreeActivity.this, "跳转成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onInterrupt(Postcard postcard) {
+
+            }
+        };
     }
 }
