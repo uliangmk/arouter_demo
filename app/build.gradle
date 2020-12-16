@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
+
 
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
@@ -18,7 +20,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main() {
+            jniLibs.srcDirs = ['libs']
+            proto {
+                srcDir 'src/main/proto'  //proto文件所在路径
+                include '**/*.proto'
+            }
+            java {
+                srcDir 'src/main/java'
+            }
+            res.srcDirs += ['src/main/res-voice']
+        }
+    }
 }
+
+
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.6.1'
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}
+
+
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

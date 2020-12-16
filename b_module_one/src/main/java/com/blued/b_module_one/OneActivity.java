@@ -14,6 +14,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blued.c_module_main.MainActivity;
 import com.blued.common.base.BaseActivity;
 import com.blued.common.constants.ARouterConfig;
+import com.blued.myunitydemo.PeopleProto;
 
 /**
  * @Author： ZhangYuLiang
@@ -37,6 +38,8 @@ public class OneActivity extends BaseActivity {
         module2 = findViewById(R.id.bt_module2);
         module3 = findViewById(R.id.bt_module3);
         moduleMain = findViewById(R.id.bt_module_main);
+
+//        PeopleProto.People
     }
 
     private void initListener() {

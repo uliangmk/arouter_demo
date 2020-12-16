@@ -29,4 +29,6 @@ dependencies {
     //阿里路由
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_annotation"]
+    //proto
+    api 'com.google.protobuf:protobuf-java:3.6.1'
 }

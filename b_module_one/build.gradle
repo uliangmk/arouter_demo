@@ -3,19 +3,20 @@ if (Boolean.valueOf(rootProject.ext.runOneAsApp)) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
     buildToolsVersion rootProject.ext.versions.buildToolsVersion
 
     defaultConfig {
+        if (Boolean.valueOf(rootProject.ext.runOneAsApp)) {
+            applicationId rootProject.ext.versions.applicationId
+        }
         minSdkVersion rootProject.ext.versions.minSdkVersion
         targetSdkVersion rootProject.ext.versions.targetSdkVersion
         versionCode rootProject.ext.versions.versionCode
         versionName rootProject.ext.versions.versionName
-        if (Boolean.valueOf(rootProject.ext.runOneAsApp)) {
-            applicationId rootProject.ext.versions.applicationId
-        }
         //阿里路由
         javaCompileOptions {
             annotationProcessorOptions {
@@ -39,20 +40,41 @@ android {
                 manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-                java {
-                    //library模式下，排除java/debug文件夹下的所有文件
-                    exclude '*module'
-                }
+            }
+            jniLibs.srcDirs = ['libs']
+            proto {
+                srcDir 'src/main/proto'  //proto文件所在路径
+                include '**/*.proto'
+            }
+            java {
+                srcDir 'src/main/java'
             }
         }
     }
 }
 
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.6.1'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}
+
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':c_module_main')
     implementation project(':x_module_common')
-
     //Arouter路由
     annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
 }
