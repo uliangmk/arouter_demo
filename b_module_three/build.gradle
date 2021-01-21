@@ -50,6 +50,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':c_module_main')
     implementation project(':x_module_common')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //Arouter路由
     annotationProcessor rootProject.ext.dependencies["arouter_compiler"]}

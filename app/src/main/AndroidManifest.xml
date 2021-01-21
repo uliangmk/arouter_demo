@@ -22,6 +22,7 @@
         <activity android:name="com.blued.b_module_one.OneActivity" />
         <activity android:name="com.blued.b_module_two.TwoActivity" />
         <activity android:name="com.blued.b_module_three.ThreeActivity" />
+        <activity android:name="com.blued.b_module_three.EventTestActivity" />
     </application>
 
 </manifest>

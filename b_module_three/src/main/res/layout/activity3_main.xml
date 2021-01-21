@@ -40,4 +40,17 @@
         android:textColor="#0000ff"
         android:textSize="16dp" />
 
+
+
+    <TextView
+        android:id="@+id/bt_event_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="事件分发"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
 </LinearLayout>

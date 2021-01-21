@@ -1,5 +1,6 @@
 package com.blued.b_module_three;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blued.c_module_main.MainActivity;
 import com.blued.common.base.BaseActivity;
 import com.blued.common.constants.ARouterConfig;
 
@@ -19,7 +21,7 @@ import com.blued.common.constants.ARouterConfig;
  */
 @Route(path = ARouterConfig.VIEW_THREE)
 public class ThreeActivity extends BaseActivity {
-    private View module1, module2;
+    private View module1, module2, tvEvent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,22 +33,30 @@ public class ThreeActivity extends BaseActivity {
     }
 
     private void initView() {
-        module1 = findViewById(com.blued.c_module_main.R.id.bt_module1);
-        module2 = findViewById(com.blued.c_module_main.R.id.bt_module2);
+        module1 = findViewById(R.id.bt_module1);
+        module2 = findViewById(R.id.bt_module2);
+        tvEvent = findViewById(R.id.bt_event_test);
     }
 
     private void initListener() {
         module1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build(ARouterConfig.VIEW_ONE).navigation(ThreeActivity.this,callback);
+                ARouter.getInstance().build(ARouterConfig.VIEW_ONE).navigation(ThreeActivity.this, callback);
             }
         });
 
         module2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build(ARouterConfig.VIEW_TWO).navigation(ThreeActivity.this,callback);
+                ARouter.getInstance().build(ARouterConfig.VIEW_TWO).navigation(ThreeActivity.this, callback);
+            }
+        });
+        tvEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ThreeActivity.this, EventTestActivity.class);
+                startActivity(intent);
             }
         });
 
