@@ -8,7 +8,6 @@ import android.os.Bundle;
  * 事件分发
  * */
 public class EventTestActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
